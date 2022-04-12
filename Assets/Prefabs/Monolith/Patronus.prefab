@@ -258,6 +258,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6266956086799843410}
+  - component: {fileID: 1301774359}
   m_Layer: 0
   m_Name: Patronus
   m_TagString: Untagged
@@ -272,7 +273,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6751850182794353384}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: -0.4149313, y: 0, z: -5.1368866}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
@@ -282,4 +283,19 @@ Transform:
   - {fileID: 2280871918943479680}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
+--- !u!114 &1301774359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6751850182794353384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99f2b261bfbb7479393bb846407d711c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  faceA: {fileID: 2100000, guid: f9649b0cc594542f6bbb6a4d724690d0, type: 2}
+  faceB: {fileID: 2100000, guid: eea6c185ab0424503be63e4279790b85, type: 2}
+  faceC: {fileID: 2100000, guid: 5b885ef35569a45c68917d38327ad568, type: 2}

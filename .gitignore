@@ -64,3 +64,5 @@ crashlytics-build.properties
 
 # Files too big
 [Aa]ssets/Plugins/Ignore/
+
+/[Uu]serSettings/

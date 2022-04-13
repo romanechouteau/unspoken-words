@@ -11,13 +11,13 @@
 
 Shader "Custom/DepthShader" {
 	Properties {
-		
+
 		[PerRendererData]
 		_MainTex ("MainTex", 2D) = "black" {}
 
-		_DepthScale("Depth Multiplier Factor to Meters", float) = 0.001 
+		_DepthScale("Depth Multiplier Factor to Meters", float) = 0.001
 		_Detail("Level of detail", Range(1, 50)) = 10.0
-		
+
 		_MinRange("Min Range(m)", Range(0, 10)) = 0.15
 		_MaxRange("Max Range(m)", Range(0, 20)) = 10.0
 
@@ -37,32 +37,49 @@ Shader "Custom/DepthShader" {
 			#include "UnityCG.cginc"
 
 			sampler2D _MainTex;
-			
+
 			float _MinRange;
 			float _MaxRange;
 			float _DepthScale;
 			float _Detail;
-			
-			float samplePixel (v2f_img pix, float offset) {
-				float z = tex2D(_MainTex, floor(pix.uv * _Detail)/_Detail + offset).r * 0xffff * _DepthScale;
-				z = (z - _MinRange) / (_MaxRange - _MinRange);
-				if(z <= 0)
-					return 0;
-				return step(0.1, 1 - (z / _MaxRange));
-			}
+
+			float2 rez = float2(640., 480.);
+			float2 pixel;
+			float2 centerOffset;
+			float2 quarterPixel;
+
+			float samplePixel (v2f_img pix, float2 offset) {
+					// rotate texture
+					float2 uv = float2(1., 1.) - pix.uv;
+					// remove detail to get origin of big pixel
+					float2 origin = floor(uv * _Detail) / _Detail;
+
+					// get depth value at pixel position
+					float z = tex2D(_MainTex, origin + centerOffset + offset * quarterPixel).r * 0xffff * _DepthScale;
+
+					// apply min and max range
+					z = (z - _MinRange) / (_MaxRange - _MinRange);
+
+					if(z <= 0)
+						return 0;
+
+					// reverse color
+					return step(0.1, 1. - z);
+				}
 
 			half4 frag (v2f_img pix) : SV_Target
 			{
-				//640 480
-				// [0..1] -> ushort -> meters
-				float2 rez = float2(640., 480.);
-				float2 aPix = float2(1. / (rez.x/ _Detail / 4.0), 1. / (rez.y / _Detail / 4.0));
-				//center
-				float total = samplePixel(pix, 0);
-				total+= samplePixel(pix, aPix.y);
-				total+= samplePixel(pix, -aPix.y);
-				total+= samplePixel(pix, aPix.x);
-				total+= samplePixel(pix, -aPix.x);
+				// get pixel size
+				pixel = float2((rez.x / _Detail) / rez.x, (rez.y / _Detail) / rez.y);
+				centerOffset = pixel * 0.5;
+				quarterPixel = pixel * 0.25;
+
+				// get average color
+				float total = samplePixel(pix, float2(0., 0.));
+				total+= samplePixel(pix, float2(0., -1));
+				total+= samplePixel(pix, float2(0., 1));
+				total+= samplePixel(pix, float2(-1, 0.));
+				total+= samplePixel(pix, float2(1, 0.));
 
 				float average = total / 5.;
 				return average;

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Depth Mat
+  m_Name: Depth Processing
   m_Shader: {fileID: 4800000, guid: eba62557ca429452e958bf6df1b47a79, type: 3}
   m_ShaderKeywords: _COLORMAP_VIRIDIS
   m_LightmapFlags: 1
@@ -32,7 +32,7 @@ Material:
     - _Colormap: 7
     - _DepthScale: 0.001
     - _Detail: 10
-    - _MaxRange: 0.87
+    - _MaxRange: 0.65
     - _MinRange: 0.1
     m_Colors: []
   m_BuildTextureStacks: []

@@ -1,14 +1,16 @@
-﻿/* Copyright (c) 2021 dr. ext (Vladimir Sigalkin) */
+﻿/* Copyright (c) 2020 ExT (V.Sigalkin) */
 
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
-namespace extOSC.Examples
+namespace extOSC.CUSTOM
 {
 	public class SimpleMessageReceiver : MonoBehaviour
 	{
 		#region Public Vars
 
-		public string Address = "/example/1";
+		public string Address = "/xy1";
 
 		[Header("OSC Settings")]
 		public OSCReceiver Receiver;
@@ -28,7 +30,13 @@ namespace extOSC.Examples
 
 		private void ReceivedMessage(OSCMessage message)
 		{
-			Debug.LogFormat("Received: {0}", message);
+			// Debug.LogFormat("Received: {0}", message);
+			float x = (message.Values[0].FloatValue - 0.5f) * 2f;
+			float y = (message.Values[1].FloatValue - 0.5f) * 2f;
+
+			List<Vector2> positions = new List<Vector2>();
+			positions.Add(new Vector2(x,y));
+			PositionManager.Instance.SetPositions(positions);
 		}
 
 		#endregion

@@ -58,7 +58,7 @@ public class CameraManager : MonoBehaviour
         }
 
         // Send positions to PositionManager
-       PositionManager.Instance.SetPosition(Positions.Count != 0 ? Positions[0] : new Vector2(-1,-1));
+        PositionManager.Instance.SetPositions(Positions);
     }
 
     // Check pixel's color and recursively check surrounding pixels

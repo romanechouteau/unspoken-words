@@ -232,7 +232,7 @@ Material:
     - _ZTestGBuffer: 4
     - _ZTestTransparent: 4
     - _ZWrite: 1
-    - _proximity: 0
+    - _proximity: 0.48976433
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
@@ -250,6 +250,8 @@ Material:
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
+    - _intensity: {r: 3, g: 2, b: 0, a: 0}
+    - _proximity: {r: 0.79999995, g: 0.3333335, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &3648463777246541188
 MonoBehaviour:

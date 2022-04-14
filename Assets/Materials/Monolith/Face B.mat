@@ -24,7 +24,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Face B
-  m_Shader: {fileID: -6465566751694194690, guid: 52f1d667a75144f6499266d903c79469, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 7e0ef72aaa642441d89dd029e528cdab, type: 3}
   m_ShaderKeywords: _DISABLE_SSR_TRANSPARENT _NORMALMAP_TANGENT_SPACE
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -266,4 +266,6 @@ Material:
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
+    - _intensity: {r: 0, g: 2, b: 0, a: 0}
+    - _proximity: {r: 0, g: 0.7247093, b: 0, a: 0}
   m_BuildTextureStacks: []

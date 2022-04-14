@@ -16,7 +16,7 @@ Shader "Custom/DepthShader" {
 		_MainTex ("MainTex", 2D) = "black" {}
 
 		_DepthScale("Depth Multiplier Factor to Meters", float) = 0.001
-		_Detail("Level of detail", Range(1, 50)) = 10.0
+		_Detail("Level of detail", Integer) = 10
 
 		_MinRange("Min Range(m)", Range(0, 10)) = 0.15
 		_MaxRange("Max Range(m)", Range(0, 20)) = 10.0
@@ -41,7 +41,7 @@ Shader "Custom/DepthShader" {
 			float _MinRange;
 			float _MaxRange;
 			float _DepthScale;
-			float _Detail;
+			int _Detail;
 
 			float2 rez = float2(640., 480.);
 			float2 pixel;
@@ -52,7 +52,7 @@ Shader "Custom/DepthShader" {
 					// rotate texture
 					float2 uv = float2(1., 1.) - pix.uv;
 					// remove detail to get origin of big pixel
-					float2 origin = floor(uv * _Detail) / _Detail;
+					float2 origin = floor(uv * float(_Detail)) / float(_Detail);
 
 					// get depth value at pixel position
 					float z = tex2D(_MainTex, origin + centerOffset + offset * quarterPixel).r * 0xffff * _DepthScale;
@@ -70,7 +70,7 @@ Shader "Custom/DepthShader" {
 			half4 frag (v2f_img pix) : SV_Target
 			{
 				// get pixel size
-				pixel = float2((rez.x / _Detail) / rez.x, (rez.y / _Detail) / rez.y);
+				pixel = float2((rez.x / float(_Detail)) / rez.x, (rez.y / float(_Detail)) / rez.y);
 				centerOffset = pixel * 0.5;
 				quarterPixel = pixel * 0.25;
 

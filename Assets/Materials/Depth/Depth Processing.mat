@@ -31,7 +31,7 @@ Material:
     m_Floats:
     - _Colormap: 7
     - _DepthScale: 0.001
-    - _Detail: 10
+    - _Detail: 14.74
     - _MaxRange: 0.65
     - _MinRange: 0.1
     m_Colors: []

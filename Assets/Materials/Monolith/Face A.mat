@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Face A
-  m_Shader: {fileID: -6465566751694194690, guid: cafcbfc9e5c14492995358e185011bd1, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: a22b534428d2a4307b4f486d5e573b4f, type: 3}
   m_ShaderKeywords: _DISABLE_SSR_TRANSPARENT _NORMALMAP_TANGENT_SPACE
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -79,6 +79,18 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _NormalMapOS:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_239e7f01659a41e29538a6740b028fc3_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 088ad1e2997e84f148b66944d2ae1dbc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_d6678209ab0f4cd9a80df009efa7cdfe_Texture_1:
+        m_Texture: {fileID: 2800000, guid: a1f0f2b1965424527bce7d59d51da217, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_f3295fa0ff46462590eeff6828f8992b_Texture_1:
+        m_Texture: {fileID: 2800000, guid: a1f0f2b1965424527bce7d59d51da217, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecularColorMap:
@@ -250,8 +262,8 @@ Material:
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
-    - _intensity: {r: 3, g: 2, b: 0, a: 0}
-    - _proximity: {r: 0.79999995, g: 0.3333335, b: 0, a: 0}
+    - _intensity: {r: 0, g: 0, b: 0, a: 0}
+    - _proximity: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &3648463777246541188
 MonoBehaviour:

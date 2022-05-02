@@ -16,6 +16,13 @@ public class PositionManager : Singleton<PositionManager>
     public Material faceB;
     public Material faceC;
 
+    public float lerpSpeed = 0.1f;
+
+    private Vector3[] proximity = new Vector3[3];
+    private Vector3[] intensity = new Vector3[3];
+    private Vector3[] lerpProximity = new Vector3[3];
+    private Vector3[] lerpIntensity = new Vector3[3];
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,9 +38,9 @@ public class PositionManager : Singleton<PositionManager>
             SortUsers(positions[i]);
         }
 
-        ProcessUsers(faceA, faceAUsers);
-        ProcessUsers(faceB, faceBUsers);
-        ProcessUsers(faceC, faceCUsers);
+        ProcessUsers(faceA, faceAUsers, 0);
+        ProcessUsers(faceB, faceBUsers, 1);
+        ProcessUsers(faceC, faceCUsers, 2);
     }
 
     void SortUsers(Vector2 position) {
@@ -54,7 +61,7 @@ public class PositionManager : Singleton<PositionManager>
         }
     }
 
-    void ProcessUsers(Material face, List<float> users) {
+    void ProcessUsers(Material face, List<float> users, int index) {
         float zone1Dist = 5f;
         float zone2Dist = 5f;
         float zone3Dist = 5f;
@@ -84,22 +91,28 @@ public class PositionManager : Singleton<PositionManager>
             }
         }
 
-        face.SetVector("_proximity", new Vector3(
-            Mathf.Clamp(1f - ((zone1Dist - 0.75f) * 4f), 0f, 1f),
-            Mathf.Clamp(1f - ((zone2Dist - 0.5f) * 4f), 0f, 1f),
-            Mathf.Clamp(1f - zone3Dist * 4f, 0f, 1f)
-        ));
-        face.SetVector("_intensity", new Vector3(
-            zone1Count,
-            zone2Count,
-            zone3Count
-        ));
+        lerpProximity[index].x = Mathf.Clamp(1f - ((zone1Dist - 0.75f) * 4f), 0f, 1f);
+        lerpProximity[index].y = Mathf.Clamp(1f - ((zone2Dist - 0.5f) * 4f), 0f, 1f);
+        lerpProximity[index].z = Mathf.Clamp(1f - zone3Dist * 4f, 0f, 1f);
 
+        lerpIntensity[index].x = zone1Count;
+        lerpIntensity[index].y = zone2Count;
+        lerpIntensity[index].z = zone3Count;
+    }
+
+    void LerpValues(Material face, int index) {
+        proximity[index] = Vector3.Lerp(proximity[index], lerpProximity[index], lerpSpeed);
+        face.SetVector("_proximity", proximity[index]);
+
+        intensity[index] = Vector3.Lerp(intensity[index], lerpIntensity[index], lerpSpeed);
+        face.SetVector("_intensity", intensity[index]);
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Debug.Log(position);
+        LerpValues(faceA, 0);
+        LerpValues(faceB, 1);
+        LerpValues(faceC, 2);
     }
 }

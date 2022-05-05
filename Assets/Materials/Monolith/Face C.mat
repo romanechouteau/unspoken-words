@@ -24,7 +24,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Face C
-  m_Shader: {fileID: -6465566751694194690, guid: f98f1463c0ea2416580d921db95403e2, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: dd986aca9426f4ee2b7d1944ed1d2793, type: 3}
   m_ShaderKeywords: _DISABLE_SSR_TRANSPARENT _NORMALMAP_TANGENT_SPACE
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0

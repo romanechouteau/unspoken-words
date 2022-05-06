@@ -35,8 +35,10 @@ namespace extOSC.CUSTOM
 			float y = (message.Values[1].FloatValue - 0.5f) * 2f;
 
 			List<Vector2> positions = new List<Vector2>();
-			positions.Add(new Vector2(x,y));
-			PositionManager.Instance.SetPositions(positions);
+			for(int i = 0; i<(int)Random.Range(1f, 3f); i++) {
+				positions.Add(new Vector2(x,y));
+			}
+ 			PositionManager.Instance.SetPositions(positions);
 		}
 
 		#endregion

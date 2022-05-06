@@ -176,6 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5501345617579021168}
   - component: {fileID: 1003093396360186142}
+  - component: {fileID: 5463444469368843777}
   m_Layer: 0
   m_Name: nuclear girl
   m_TagString: Untagged
@@ -216,7 +217,19 @@ MonoBehaviour:
   faceA: {fileID: 2100000, guid: f9649b0cc594542f6bbb6a4d724690d0, type: 2}
   faceB: {fileID: 2100000, guid: eea6c185ab0424503be63e4279790b85, type: 2}
   faceC: {fileID: 2100000, guid: 5b885ef35569a45c68917d38327ad568, type: 2}
-  lerpSpeed: 0.1
+--- !u!114 &5463444469368843777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5121547279127497162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dcedbd0763cd4f4cb6e0386967725dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shapePrefab: {fileID: 5288015544915133155, guid: ad485d5d5c1434d96aa69b59c26d47d1, type: 3}
 --- !u!1 &7203845319209194838
 GameObject:
   m_ObjectHideFlags: 0

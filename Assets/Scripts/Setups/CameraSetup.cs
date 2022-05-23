@@ -9,8 +9,8 @@ public class CameraSetup : MonoBehaviour
     void Start()
     {
         Vector3 normal = target.normals[0];
-        GetComponent<Transform>().rotation = Quaternion.FromToRotation(Vector3.up, normal);
-        GetComponent<Transform>().rotation.z +=180;
+        // GetComponent<Transform>().rotation = Quaternion.FromToRotation(Vector3.up, normal);
+        // GetComponent<Transform>().rotation.z +=180;
     }
 
     // Update is called once per frame

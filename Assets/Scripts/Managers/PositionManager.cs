@@ -30,10 +30,14 @@ public class PositionManager : Singleton<PositionManager>
         for(int i=0; i<positions.Count; i++) {
             SortUsers(positions[i]);
         }
+
         ShapeManager.Instance.UpdateShapes(faceAUsers, 0);
         ShapeManager.Instance.UpdateShapes(faceBUsers, 1);
         ShapeManager.Instance.UpdateShapes(faceCUsers, 2);
 
+        AudioManager.Instance.ToUserCountSnapshot(0, faceAUsers.Count);
+        AudioManager.Instance.ToUserCountSnapshot(1, faceBUsers.Count);
+        AudioManager.Instance.ToUserCountSnapshot(2, faceCUsers.Count);
     }
 
     void SortUsers(Vector2 position) {

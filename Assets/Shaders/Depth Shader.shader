@@ -75,14 +75,19 @@ Shader "Custom/DepthShader" {
 				quarterPixel = pixel * 0.25;
 
 				// get average color
-				float total = samplePixel(pix, float2(0., 0.));
-				total+= samplePixel(pix, float2(0., -1));
-				total+= samplePixel(pix, float2(0., 1));
-				total+= samplePixel(pix, float2(-1, 0.));
-				total+= samplePixel(pix, float2(1, 0.));
+				float dist = distance(pix.uv, float2(0.5, 0.45));
+				if (dist >= 0.2) {
+					float total = samplePixel(pix, float2(0., 0.));
+					total+= samplePixel(pix, float2(0., -1));
+					total+= samplePixel(pix, float2(0., 1));
+					total+= samplePixel(pix, float2(-1, 0.));
+					total+= samplePixel(pix, float2(1, 0.));
 
-				float average = total / 5.;
-				return average;
+					float average = total / 5.;
+					return average;
+				} else {
+					return float4(0., 0., 0., 1.);
+				}
 			}
 			ENDCG
 		}

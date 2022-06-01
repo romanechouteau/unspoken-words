@@ -95,7 +95,7 @@ public class ShapeManager : Singleton<ShapeManager>
   {
     GameObject face = faces[faceIndex];
     GameObject prefab = shapePrefabs[Random.Range(0, shapePrefabs.Length)];
-    GameObject newShape = Instantiate(shapePrefabs[0], face.transform);
+    GameObject newShape = Instantiate(prefab, face.transform);
 
     newShape.transform.localPosition = GetShapePosition(bounds[faceIndex]);
     newShape.GetComponent<Renderer>().material = materials[Random.Range(0, materials.Length)];
@@ -124,7 +124,7 @@ public class ShapeManager : Singleton<ShapeManager>
       for (int j = 0; j < current.Count; j++)
       {
         current[j].intensity = Mathf.Lerp(current[j].intensity, current[j].targetIntensity, 0.1f);
-        current[j].shapeMesh.transform.localScale = new Vector3((1 + current[j].intensity) * 0.001f, (1 + current[j].intensity) * 0.001f, (1 + current[j].intensity) * 0.001f);
+        current[j].shapeMesh.transform.localScale = new Vector3((1 + current[j].intensity) * 0.05f, (1 + current[j].intensity) * 0.05f, (1 + current[j].intensity) * 0.05f);
       }
     }
   }

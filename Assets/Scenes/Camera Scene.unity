@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 224.00847, g: 286.46533, b: 389.95425, a: 1}
+  m_IndirectSpecularColor: {r: 262.12134, g: 324.7798, b: 429.8086, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2295,15 +2295,15 @@ PrefabInstance:
     - target: {fileID: 5463444469368843777, guid: 1edd7e907f3274518ab87b2af9cc33a7, type: 3}
       propertyPath: faces.Array.data[0]
       value: 
-      objectReference: {fileID: 1627786911}
+      objectReference: {fileID: 8505115037610584786}
     - target: {fileID: 5463444469368843777, guid: 1edd7e907f3274518ab87b2af9cc33a7, type: 3}
       propertyPath: faces.Array.data[1]
       value: 
-      objectReference: {fileID: 1627786910}
+      objectReference: {fileID: 3262053474873912447}
     - target: {fileID: 5463444469368843777, guid: 1edd7e907f3274518ab87b2af9cc33a7, type: 3}
       propertyPath: faces.Array.data[2]
       value: 
-      objectReference: {fileID: 1627786909}
+      objectReference: {fileID: 1773483600288447678}
     - target: {fileID: 5463444469368843777, guid: 1edd7e907f3274518ab87b2af9cc33a7, type: 3}
       propertyPath: materials.Array.size
       value: 11
@@ -2486,21 +2486,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1edd7e907f3274518ab87b2af9cc33a7, type: 3}
---- !u!1 &1627786909 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 967609569257964346, guid: 1edd7e907f3274518ab87b2af9cc33a7, type: 3}
-  m_PrefabInstance: {fileID: 1627786908}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1627786910 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4085937408682464251, guid: 1edd7e907f3274518ab87b2af9cc33a7, type: 3}
-  m_PrefabInstance: {fileID: 1627786908}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1627786911 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7203845319209194838, guid: 1edd7e907f3274518ab87b2af9cc33a7, type: 3}
-  m_PrefabInstance: {fileID: 1627786908}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1840430616
 GameObject:
   m_ObjectHideFlags: 0

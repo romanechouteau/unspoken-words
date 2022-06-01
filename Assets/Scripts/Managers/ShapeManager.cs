@@ -5,13 +5,10 @@ using UnityEngine;
 public class ShapeManager : Singleton<ShapeManager>
 {
   // Start is called before the first frame update
-  public GameObject shapePrefab;
-  public GameObject faceA;
-  public GameObject faceB;
-  public GameObject faceC;
+  public GameObject[] faces;
+  public GameObject[] shapePrefabs;
+  public Material[] materials;
   private List<Shape>[] shapes = new List<Shape>[3];
-  private GameObject[] faces = new GameObject[3];
-
   private Vector3[][] bounds = new Vector3[3][];
 
   void Start()
@@ -20,7 +17,6 @@ public class ShapeManager : Singleton<ShapeManager>
     {
       shapes[i] = new List<Shape>();
       // get each faces
-      faces[i] = i == 0 ? faceA : i == 1 ? faceB : faceC;
       bounds[i] = new Vector3[4];
       // get each bounds for each faces
       for (int j = 0; j < 4; j++)
@@ -98,9 +94,12 @@ public class ShapeManager : Singleton<ShapeManager>
   void AddShape(int faceIndex)
   {
     GameObject face = faces[faceIndex];
-    GameObject newShape = Instantiate(shapePrefab, face.transform);
-    Vector3 pos = GetShapePosition(bounds[faceIndex]);
-    newShape.transform.localPosition = pos;
+    GameObject prefab = shapePrefabs[Random.Range(0, shapePrefabs.Length)];
+    GameObject newShape = Instantiate(shapePrefabs[0], face.transform);
+
+    newShape.transform.localPosition = GetShapePosition(bounds[faceIndex]);
+    newShape.GetComponent<Renderer>().material = materials[Random.Range(0, materials.Length)];
+
     Shape shape = new Shape(0f, 0f, newShape);
     shapes[faceIndex].Add(shape);
   }

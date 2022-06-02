@@ -86,7 +86,7 @@ public class ShapeManager : Singleton<ShapeManager>
     // Get intercept (ordonnée à l'origine)
     float depthLineIntercept = faceBounds[0].y - depthLineSlope * faceBounds[0].z;
 
-    float y = (depthLineSlope * z + depthLineIntercept) + 0.0008f;
+    float y = (depthLineSlope * z + depthLineIntercept) + 0.001f;
 
     return new Vector3(x, y, z);
   }
@@ -98,7 +98,9 @@ public class ShapeManager : Singleton<ShapeManager>
     GameObject newShape = Instantiate(prefab, face.transform);
 
     newShape.transform.localPosition = GetShapePosition(bounds[faceIndex]);
-    newShape.GetComponent<Renderer>().material = materials[Random.Range(0, materials.Length)];
+    newShape.transform.localScale = Random.Range(0.9f, 1.1f) * prefab.transform.localScale;
+    newShape.transform.GetChild(0).GetComponent<Renderer>().material = materials[Random.Range(0, materials.Length)];
+    newShape.transform.GetChild(0).Rotate(Random.Range(0f, 360f), Random.Range(0f, 360f), Random.Range(0f, 360f), Space.Self);
 
     Shape shape = new Shape(0f, 0f, newShape);
     shapes[faceIndex].Add(shape);
@@ -124,7 +126,7 @@ public class ShapeManager : Singleton<ShapeManager>
       for (int j = 0; j < current.Count; j++)
       {
         current[j].intensity = Mathf.Lerp(current[j].intensity, current[j].targetIntensity, 0.1f);
-        current[j].shapeMesh.transform.localScale = new Vector3((1 + current[j].intensity) * 0.05f, (1 + current[j].intensity) * 0.05f, (1 + current[j].intensity) * 0.05f);
+        // current[j].shapeMesh.transform.localScale = new Vector3((1 + current[j].intensity) * 0.05f, (1 + current[j].intensity) * 0.05f, (1 + current[j].intensity) * 0.05f);
       }
     }
   }

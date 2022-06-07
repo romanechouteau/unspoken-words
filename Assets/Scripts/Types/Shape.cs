@@ -6,9 +6,11 @@ class Shape {
   public GameObject shapeMesh;
   public float targetIntensity;
 
-  public Shape(float initialIntensity, float initialTargetIntensity, GameObject shape) {
+  public Shape(float initialIntensity, float initialTargetIntensity, GameObject shape, Boolean isGlass, Vector3 pos) {
     intensity = initialIntensity;
     targetIntensity = initialTargetIntensity;
     shapeMesh = shape;
+    glass = isGlass;
+    startPos = pos;
   }
 }

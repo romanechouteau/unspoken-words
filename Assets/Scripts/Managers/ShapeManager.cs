@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class ShapeManager : Singleton<ShapeManager>
 {
@@ -9,6 +10,7 @@ public class ShapeManager : Singleton<ShapeManager>
   public GameObject[] shapePrefabs;
   public Material[] materials;
   private List<Shape>[] shapes = new List<Shape>[3];
+  private List<Shape> deletedShapes = new List<Shape>();
   private Vector3[][] bounds = new Vector3[3][];
 
   void Start()
@@ -98,26 +100,62 @@ public class ShapeManager : Singleton<ShapeManager>
     GameObject newShape = Instantiate(prefab, face.transform);
 
     newShape.transform.localPosition = GetShapePosition(bounds[faceIndex]);
-    newShape.transform.localScale = Random.Range(0.9f, 1.1f) * prefab.transform.localScale;
+    newShape.transform.localScale = new Vector3(0f,0f,0f);
     int materialIndex= Random.Range(0, materials.Length);
     newShape.transform.GetChild(0).GetComponent<Renderer>().material = materials[materialIndex];
     newShape.transform.GetChild(0).GetComponent<Renderer>().material.SetInt("_Stripes", Random.value >0.5 ? 1 : 0);
     newShape.transform.GetChild(0).Rotate(Random.Range(0f, 360f), Random.Range(0f, 360f), Random.Range(0f, 360f), Space.Self);
 
-    Shape shape = new Shape(0f, 0f, newShape, materialIndex == 0, newShape.transform.localPosition);
+    Shape shape = new Shape(0f, 0f, newShape, materialIndex == 0, newShape.transform.localPosition, Random.Range(0.9f, 1.1f) * prefab.transform.localScale);
     shapes[faceIndex].Add(shape);
+
+    AudioManager.Instance.PlayEvent(faceIndex, 0);
   }
   void RemoveShape(int faceIndex)
   {
     int lastIndex = shapes[faceIndex].Count - 1;
-    Destroy(shapes[faceIndex][lastIndex].shapeMesh);
+
+    AudioManager.Instance.PlayEvent(faceIndex, 1);
+
+    StartCoroutine(RemoveShapeCoroutine(faceIndex,lastIndex));
+
+    
+  }
+  IEnumerator RemoveShapeCoroutine(int faceIndex, int lastIndex) {
+    deletedShapes.Add(shapes[faceIndex][lastIndex]);
+    int deletedShapeIndex = deletedShapes.Count-1;
+    deletedShapes[deletedShapes.Count-1].targetScaleFactor = 0f;
     shapes[faceIndex].RemoveAt(lastIndex);
+    yield return new WaitForSeconds(2);
+    if(deletedShapes.ElementAtOrDefault(deletedShapeIndex) != null) {
+      Destroy(deletedShapes[deletedShapeIndex].shapeMesh);
+      deletedShapes.RemoveAt(deletedShapeIndex);
+    }
+    
   }
   void UpdateIntensities(List<float> proximities, int faceIndex)
   {
     for (int i = 0; i < shapes[faceIndex].Count; i++)
     {
-      shapes[faceIndex][i].targetIntensity = proximities[i];
+        shapes[faceIndex][i].targetIntensity = proximities[i];
+    }
+  }
+  void AnimateShape(Shape shape) {
+    shape.scaleFactor = Mathf.Lerp(shape.scaleFactor, shape.targetScaleFactor, 0.35f);
+    shape.shapeMesh.transform.localScale = shape.realScale * shape.scaleFactor; 
+    shape.intensity = Mathf.Lerp(shape.intensity, shape.targetIntensity, 0.1f);
+
+    if(shape.glass) {
+      shape.time += 1f * (0.5f + shape.intensity);
+      shape.shapeMesh.transform.localPosition = new Vector3(
+        shape.startPos.x + Mathf.Sin(shape.time * 2f) * 0.0001f,
+        shape.startPos.y,
+        shape.startPos.z
+      );
+    }
+
+    else {
+      shape.shapeMesh.transform.GetChild(0).GetComponent<Renderer>().material.SetFloat("_Proximity", shape.intensity);
     }
   }
   void Update()
@@ -127,20 +165,12 @@ public class ShapeManager : Singleton<ShapeManager>
       List<Shape> current = shapes[i];
       for (int j = 0; j < current.Count; j++)
       {
-        current[j].intensity = Mathf.Lerp(current[j].intensity, current[j].targetIntensity, 0.1f);
-        if(current[j].glass) {
-          current[j].time += 1f * (0.5f + current[j].intensity);
-          current[j].shapeMesh.transform.localPosition = new Vector3(
-            current[j].startPos.x + Mathf.Sin(current[j].time * 2f) * 0.0001f,
-            current[j].startPos.y,
-            current[j].startPos.z
-          );
-        }
-        else {
-          current[j].shapeMesh.transform.GetChild(0).GetComponent<Renderer>().material.SetFloat("_Proximity", current[j].intensity);
-        }
-        // current[j].shapeMesh.transform.localScale = new Vector3((1 + current[j].intensity) * 0.05f, (1 + current[j].intensity) * 0.05f, (1 + current[j].intensity) * 0.05f);
+        AnimateShape(current[j]);
       }
     }
+    for (int i = 0; i < deletedShapes.Count; i++)
+      {
+        AnimateShape(deletedShapes[i]);
+      }
   }
 }

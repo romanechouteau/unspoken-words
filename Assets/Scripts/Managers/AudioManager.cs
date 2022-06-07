@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
+
 public class AudioManager : Singleton<AudioManager>
 {
     public AudioMixer[] mixers;
+    public AudioSource[] sources;
 
     public void ToUserCountSnapshot(int faceIndex, int userCount) {
         if(userCount <= 4) {
@@ -17,4 +19,9 @@ public class AudioManager : Singleton<AudioManager>
         AudioMixerSnapshot snapshot = mixers[faceIndex].FindSnapshot(snapshotName);
         snapshot.TransitionTo(.5f);
     }
+
+    public void PlayEvent(int faceIndex, int audioIndex) {
+        sources[faceIndex*2 + audioIndex].Play();
+    }
+
 }

@@ -41,7 +41,7 @@ public class PositionManager : Singleton<PositionManager>
     }
 
     void SortUsers(Vector2 position) {
-        float proximity = 1f - Mathf.Clamp(Vector2.Distance(center, position), 0f,1f);
+        float proximity = 1f - Mathf.Clamp((Vector2.Distance(center, position) - 0.2f) * 1.25f, 0f,1f);
         float tempAngle = Vector2.SignedAngle(abscissa, position);
         float angle = tempAngle > 0f ? tempAngle : 360f + tempAngle;
 

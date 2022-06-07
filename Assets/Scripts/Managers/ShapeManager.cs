@@ -99,12 +99,12 @@ public class ShapeManager : Singleton<ShapeManager>
 
     newShape.transform.localPosition = GetShapePosition(bounds[faceIndex]);
     newShape.transform.localScale = Random.Range(0.9f, 1.1f) * prefab.transform.localScale;
-    float materialIndex= Random.Range(0, materials.Length);
+    int materialIndex= Random.Range(0, materials.Length);
     newShape.transform.GetChild(0).GetComponent<Renderer>().material = materials[materialIndex];
     newShape.transform.GetChild(0).GetComponent<Renderer>().material.SetInt("_Stripes", Random.value >0.5 ? 1 : 0);
     newShape.transform.GetChild(0).Rotate(Random.Range(0f, 360f), Random.Range(0f, 360f), Random.Range(0f, 360f), Space.Self);
 
-    Shape shape = new Shape(0f, 0f, newShape, materialIndex === 0, newShape.transform.localPosition);
+    Shape shape = new Shape(0f, 0f, newShape, materialIndex == 0, newShape.transform.localPosition);
     shapes[faceIndex].Add(shape);
   }
   void RemoveShape(int faceIndex)
@@ -129,10 +129,15 @@ public class ShapeManager : Singleton<ShapeManager>
       {
         current[j].intensity = Mathf.Lerp(current[j].intensity, current[j].targetIntensity, 0.1f);
         if(current[j].glass) {
-          current[j].shapeMesh = current[j].startPos * Mathf.Sin(Time.time * current.intensity);
+          current[j].time += 1f * (0.5f + current[j].intensity);
+          current[j].shapeMesh.transform.localPosition = new Vector3(
+            current[j].startPos.x + Mathf.Sin(current[j].time * 2f) * 0.0001f,
+            current[j].startPos.y,
+            current[j].startPos.z
+          );
         }
         else {
-        current[j].shapeMesh.transform.GetChild(0).GetComponent<Renderer>().material.SetFloat("_Proximity", current[j].intensity);
+          current[j].shapeMesh.transform.GetChild(0).GetComponent<Renderer>().material.SetFloat("_Proximity", current[j].intensity);
         }
         // current[j].shapeMesh.transform.localScale = new Vector3((1 + current[j].intensity) * 0.05f, (1 + current[j].intensity) * 0.05f, (1 + current[j].intensity) * 0.05f);
       }

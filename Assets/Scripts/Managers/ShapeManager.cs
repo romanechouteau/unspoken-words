@@ -100,6 +100,7 @@ public class ShapeManager : Singleton<ShapeManager>
     newShape.transform.localPosition = GetShapePosition(bounds[faceIndex]);
     newShape.transform.localScale = Random.Range(0.9f, 1.1f) * prefab.transform.localScale;
     newShape.transform.GetChild(0).GetComponent<Renderer>().material = materials[Random.Range(0, materials.Length)];
+    newShape.transform.GetChild(0).GetComponent<Renderer>().material.SetInt("_Stripes", Random.value >0.5 ? 1 : 0);
     newShape.transform.GetChild(0).Rotate(Random.Range(0f, 360f), Random.Range(0f, 360f), Random.Range(0f, 360f), Space.Self);
 
     Shape shape = new Shape(0f, 0f, newShape);
@@ -126,6 +127,7 @@ public class ShapeManager : Singleton<ShapeManager>
       for (int j = 0; j < current.Count; j++)
       {
         current[j].intensity = Mathf.Lerp(current[j].intensity, current[j].targetIntensity, 0.1f);
+        current[j].shapeMesh.transform.GetChild(0).GetComponent<Renderer>().material.SetFloat("_Proximity", current[j].intensity);
         // current[j].shapeMesh.transform.localScale = new Vector3((1 + current[j].intensity) * 0.05f, (1 + current[j].intensity) * 0.05f, (1 + current[j].intensity) * 0.05f);
       }
     }

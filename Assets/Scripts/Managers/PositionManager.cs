@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class PositionManager : Singleton<PositionManager>
 {
@@ -15,6 +16,8 @@ public class PositionManager : Singleton<PositionManager>
     public Material faceA;
     public Material faceB;
     public Material faceC;
+
+    public VisualEffect[] particles; 
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +41,10 @@ public class PositionManager : Singleton<PositionManager>
         AudioManager.Instance.ToUserCountSnapshot(0, faceAUsers.Count);
         AudioManager.Instance.ToUserCountSnapshot(1, faceBUsers.Count);
         AudioManager.Instance.ToUserCountSnapshot(2, faceCUsers.Count);
+
+        particles[0].SetFloat("Amount", faceAUsers.Count);
+        particles[1].SetFloat("Amount", faceBUsers.Count);
+        particles[2].SetFloat("Amount", faceCUsers.Count);
     }
 
     void SortUsers(Vector2 position) {

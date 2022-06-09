@@ -12,6 +12,11 @@ public class ShapeManager : Singleton<ShapeManager>
   private List<Shape>[] shapes = new List<Shape>[3];
   private List<Shape> deletedShapes = new List<Shape>();
   private Vector3[][] bounds = new Vector3[3][];
+  private string[] layers = new string[]{
+    "Face A",
+    "Face B",
+    "Face C"
+  };
 
   void Start()
   {
@@ -105,7 +110,8 @@ public class ShapeManager : Singleton<ShapeManager>
     newShape.transform.GetChild(0).GetComponent<Renderer>().material = materials[materialIndex];
     newShape.transform.GetChild(0).GetComponent<Renderer>().material.SetInt("_Stripes", Random.value >0.5 ? 1 : 0);
     newShape.transform.GetChild(0).Rotate(Random.Range(0f, 360f), Random.Range(0f, 360f), Random.Range(0f, 360f), Space.Self);
-
+    newShape.layer = LayerMask.NameToLayer(layers[faceIndex]);
+    newShape.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer(layers[faceIndex]);
     Shape shape = new Shape(0f, 0f, newShape, materialIndex == 0, newShape.transform.localPosition, Random.Range(0.9f, 1.1f) * prefab.transform.localScale);
     shapes[faceIndex].Add(shape);
 

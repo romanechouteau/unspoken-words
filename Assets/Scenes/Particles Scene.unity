@@ -353,11 +353,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9132646550044516635, guid: 209ae4fc729534374a37dd2f6af8a539, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9132646550044516637, guid: 209ae4fc729534374a37dd2f6af8a539, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9132646550044516637, guid: 209ae4fc729534374a37dd2f6af8a539, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -365,7 +365,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9132646550141899920, guid: 209ae4fc729534374a37dd2f6af8a539, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9132646550141899920, guid: 209ae4fc729534374a37dd2f6af8a539, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -389,7 +389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9132646550141899934, guid: 209ae4fc729534374a37dd2f6af8a539, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9132646550838307056, guid: 209ae4fc729534374a37dd2f6af8a539, type: 3}
       propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[1].m_Value

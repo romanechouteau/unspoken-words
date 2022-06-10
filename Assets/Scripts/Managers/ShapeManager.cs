@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.VFX;
 
 public class ShapeManager : Singleton<ShapeManager>
 {
@@ -17,6 +18,8 @@ public class ShapeManager : Singleton<ShapeManager>
     "Face B",
     "Face C"
   };
+  public VisualEffect[] particles; 
+
 
   void Start()
   {
@@ -116,6 +119,12 @@ public class ShapeManager : Singleton<ShapeManager>
     shapes[faceIndex].Add(shape);
 
     AudioManager.Instance.PlayEvent(faceIndex, 0);
+    StartCoroutine(ToggleAttractor(faceIndex));
+  }
+  IEnumerator ToggleAttractor(int faceIndex) {
+    particles[faceIndex].SetBool("Attractor", true);
+    yield return new WaitForSeconds(0.5f);
+    particles[faceIndex].SetBool("Attractor", false);
   }
   void RemoveShape(int faceIndex)
   {

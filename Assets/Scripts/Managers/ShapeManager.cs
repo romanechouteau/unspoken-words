@@ -112,7 +112,9 @@ public class ShapeManager : Singleton<ShapeManager>
     int materialIndex= Random.Range(0, materials.Length);
     newShape.transform.GetChild(0).GetComponent<Renderer>().material = materials[materialIndex];
     newShape.transform.GetChild(0).GetComponent<Renderer>().material.SetInt("_Stripes", Random.value >0.5 ? 1 : 0);
-    newShape.transform.GetChild(0).Rotate(Random.Range(0f, 360f), Random.Range(0f, 360f), Random.Range(0f, 360f), Space.Self);
+    // Random.Range(0f, 360f), Random.Range(0f, 360f), Random.Range(0f, 360f)
+    newShape.transform.GetChild(0).GetComponent<Renderer>().material.SetVector("_Rotation", new Vector3(Random.Range(0f, 360f), Random.Range(0f, 360f), Random.Range(0f, 360f)));
+    newShape.transform.GetChild(0).GetComponent<Renderer>().material.SetFloat("_Offset", Random.Range(0f, 2*Mathf.PI));
     newShape.layer = LayerMask.NameToLayer(layers[faceIndex]);
     newShape.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer(layers[faceIndex]);
     Shape shape = new Shape(0f, 0f, newShape, materialIndex == 0, newShape.transform.localPosition, Random.Range(0.9f, 1.1f) * prefab.transform.localScale);

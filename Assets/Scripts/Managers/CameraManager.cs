@@ -91,9 +91,12 @@ public class CameraManager : MonoBehaviour
         }
     }
 
-    // Get position of a pixel group
+    // Get positions of a pixel group
     void SetGroupPosition(int index) {
+        // Get pixel group
         List<Vector3> group = Groups[index];
+        int size = group.Count;
+        int userCount = Mathf.FloorToInt(size / (Detail * 1));
 
         // Calc average position based on each pixel in the pixel group
         Vector2 total = new Vector2(0f,0f);
@@ -103,7 +106,6 @@ public class CameraManager : MonoBehaviour
             // Multiply coords by color intensity then add to total
             total += new Vector2(pixel.x * pixel.z,pixel.y * pixel.z);
             coefficient += pixel.z;
-
         }
 
         // Pixel group position on [0,10]
@@ -111,7 +113,10 @@ public class CameraManager : MonoBehaviour
 
         // Pixel group position on [-1,1]
         Vector2 normalizedPosition = (position / Detail) * 2 - new Vector2(1,1);
-        Positions.Add(normalizedPosition);
+
+        for (int i = 0; i < userCount; i++) {
+            Positions.Add(normalizedPosition);
+        }
     }
 
     Vector2 GetCenterAt(int x, int y) {

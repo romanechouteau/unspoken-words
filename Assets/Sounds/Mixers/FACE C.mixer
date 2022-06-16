@@ -10,6 +10,7 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 4edd53ac5822a4510ae387d3a49c8c2e
   m_FloatValues:
+    60461041983a84ad689f65c110f6a50a: -80
     ea0168282aa9c447c9883be22a744b2d: -80
     cd56e6c9095124884becd728ef1f62a6: -80
   m_TransitionOverrides: {}
@@ -65,6 +66,19 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!245 &-4617983366935293647
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: State 5
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: db57a2c8993c54f33b19556ba10b8c71
+  m_FloatValues:
+    ea0168282aa9c447c9883be22a744b2d: -80
+    cd56e6c9095124884becd728ef1f62a6: -80
+  m_TransitionOverrides: {}
 --- !u!244 &-3185613247517671435
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -89,10 +103,25 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 4b4d0680d17bb4fb0bfdc68332aaf3bc
   m_FloatValues:
+    60461041983a84ad689f65c110f6a50a: -80
     1f5ad97537cba41e79b4a96716b21390: -80
     ea0168282aa9c447c9883be22a744b2d: -80
     cd56e6c9095124884becd728ef1f62a6: -80
   m_TransitionOverrides: {}
+--- !u!244 &-455767811541800099
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: ea949b558de60401b90ff1fbddd7a320
+  m_EffectName: Attenuation
+  m_MixLevel: 4fa20d9bba554421d8d2614b4a91801f
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!241 &24100000
 AudioMixerController:
   m_ObjectHideFlags: 0
@@ -108,6 +137,7 @@ AudioMixerController:
   - {fileID: 7258910665196451673}
   - {fileID: -3003456262403209860}
   - {fileID: -8230438189465173738}
+  - {fileID: -4617983366935293647}
   m_StartSnapshot: {fileID: 24500006}
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
@@ -121,6 +151,7 @@ AudioMixerController:
     - a31c3422d1c65410889dba886aa1edf8
     - 9d36bb339213c45c09e97e277a9a5d37
     - d9bb7db8daa0d42e9a6975c26dbf3e82
+    - 7e017ebc0203448b6b805e0475cf388e
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -138,6 +169,7 @@ AudioMixerGroupController:
   - {fileID: -6733823787777323099}
   - {fileID: 3231129630332940927}
   - {fileID: 257631970368007795}
+  - {fileID: 4816909856071322241}
   - {fileID: -5403872869989719611}
   m_Volume: 172828049c2c74fdca4ca5cc89e58338
   m_Pitch: 3123bc71169f441b99f03de3fc5f4f3b
@@ -173,6 +205,7 @@ AudioMixerSnapshotController:
   m_SnapshotID: ae380ec7203db44b0a1fee1babc4ae3c
   m_FloatValues:
     99dd9700e8e434d9589e94094f19223b: -80
+    60461041983a84ad689f65c110f6a50a: -80
     5ab2fd94b29a442aa90c3c7f6f4a0b8f: -80
     1f5ad97537cba41e79b4a96716b21390: -80
     b16b2108dec07455390bb0a59d528846: -80
@@ -223,6 +256,7 @@ AudioMixerSnapshotController:
   m_SnapshotID: a5673be38f9c74f29b7c53be4769c360
   m_FloatValues:
     99dd9700e8e434d9589e94094f19223b: -80
+    60461041983a84ad689f65c110f6a50a: -80
     1f5ad97537cba41e79b4a96716b21390: -80
     b16b2108dec07455390bb0a59d528846: -80
     ea0168282aa9c447c9883be22a744b2d: -80
@@ -261,6 +295,25 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!243 &4816909856071322241
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Layer 5
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 7e017ebc0203448b6b805e0475cf388e
+  m_Children: []
+  m_Volume: 60461041983a84ad689f65c110f6a50a
+  m_Pitch: 504b88b5eefd942ecb89d08321cb9d76
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -455767811541800099}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!244 &7031069838396316961
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -286,6 +339,7 @@ AudioMixerSnapshotController:
   m_SnapshotID: 28b896506429b42bca0d644f1723fc4d
   m_FloatValues:
     99dd9700e8e434d9589e94094f19223b: -80
+    60461041983a84ad689f65c110f6a50a: -80
     1f5ad97537cba41e79b4a96716b21390: -80
     ea0168282aa9c447c9883be22a744b2d: -80
     cd56e6c9095124884becd728ef1f62a6: -80

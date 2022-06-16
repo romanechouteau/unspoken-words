@@ -15,7 +15,7 @@ public class AudioManager : Singleton<AudioManager>
         }
     }
     public void ToUserCountSnapshot(int faceIndex, int userCount) {
-        if(userCount <= 4) {
+        if(userCount <= 5) {
             TransitionToSnapshot(faceIndex, "State " + userCount);
         }
     }

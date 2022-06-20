@@ -75,8 +75,8 @@ Shader "Custom/DepthShader" {
 				quarterPixel = pixel * 0.25;
 
 				// get average color
-				float dist = distance(pix.uv, float2(0.5, 0.45));
-				if (dist >= 0.2) {
+				float dist = distance(pix.uv, float2(0.5, 0.48));
+				if (dist >= 0.17) {
 					float total = samplePixel(pix, float2(0., 0.));
 					total+= samplePixel(pix, float2(0., -1));
 					total+= samplePixel(pix, float2(0., 1));

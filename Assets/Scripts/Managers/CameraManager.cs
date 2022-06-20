@@ -96,7 +96,7 @@ public class CameraManager : MonoBehaviour
         // Get pixel group
         List<Vector3> group = Groups[index];
         int size = group.Count;
-        int userCount = Mathf.FloorToInt(size / (Detail * 1));
+        int userCount = Mathf.CeilToInt((float)size / (Detail * 2f));
 
         // Calc average position based on each pixel in the pixel group
         Vector2 total = new Vector2(0f,0f);

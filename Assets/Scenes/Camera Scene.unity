@@ -1439,6 +1439,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1045705012}
     m_Modifications:
+    - target: {fileID: 236414486823444902, guid: 54ecb140e49d44a0a9ac4f406d1d16d0, type: 3}
+      propertyPath: clearColorMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 236414486823444902, guid: 54ecb140e49d44a0a9ac4f406d1d16d0, type: 3}
+      propertyPath: backgroundColorHDR.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 236414486823444902, guid: 54ecb140e49d44a0a9ac4f406d1d16d0, type: 3}
+      propertyPath: backgroundColorHDR.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 236414486823444902, guid: 54ecb140e49d44a0a9ac4f406d1d16d0, type: 3}
+      propertyPath: backgroundColorHDR.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 236414486823444902, guid: 54ecb140e49d44a0a9ac4f406d1d16d0, type: 3}
+      propertyPath: probeLayerMask.m_Bits
+      value: 823
+      objectReference: {fileID: 0}
+    - target: {fileID: 236414486823444903, guid: 54ecb140e49d44a0a9ac4f406d1d16d0, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 823
+      objectReference: {fileID: 0}
     - target: {fileID: 236414488078182790, guid: 54ecb140e49d44a0a9ac4f406d1d16d0, type: 3}
       propertyPath: m_Name
       value: Syphon
